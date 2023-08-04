@@ -7,6 +7,7 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <Nav />
+        hello
       </header>
     </div>
   );
