@@ -1,3 +1,11 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   --brand-clr: hsl(185, 85%, 40%);
   --bg-primary: hsl(195, 20%, 86%);
@@ -34,7 +42,21 @@ body {
   flex-grow: 1;
   display: grid;
   place-self: center;
-  inline-size: clamp(var(--min-width), var(--padding-space), var(--max-width));
+  /* inline-size: clamp(var(--min-width), var(--padding-space), var(--max-width)); */
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 5vmin;
+  }
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .site-header {
