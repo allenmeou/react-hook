@@ -7,10 +7,24 @@ const App = () => {
   // STATE
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
+  const [todos, setTodos] = useState([
+    {
+      id: "todo1",
+      title: "Watching Youtube",
+    },
+    {
+      id: "todo2",
+      title: "doing homework",
+    },
+    {
+      id: "todo3",
+      title: "Watch JAV",
+    },
+  ]);
 
   // EVENT
   const handleSubmitButton = () => {
-    setName(address);
+    // hook not merge state
   };
   const handleChangeValueInput = (event) => {
     setAddress(event.target.value);
@@ -21,6 +35,15 @@ const App = () => {
       <header className="App-header">
         <Nav />
         <h3>Hello world with {name}</h3>
+        <div className="todo-container">
+          {todos.map((item, index) => {
+            return (
+              <li key={item.id}>
+                {item.id} - {item.title}
+              </li>
+            );
+          })}
+        </div>
         <input
           type="text"
           value={address}
@@ -30,7 +53,6 @@ const App = () => {
         <button type="button" onClick={() => handleSubmitButton()}>
           CLick Me!
         </button>
-        <button></button>
       </header>
     </div>
   );
