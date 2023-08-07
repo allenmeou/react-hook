@@ -1,7 +1,8 @@
 // import logo from "./logo.svg";
 import { useState } from "react";
 import "./App.css";
-import Nav from "./views/Nav";
+import Nav from "./views/Nav/Nav";
+import Todo from "./views/Todo/Todo";
 
 const App = () => {
   // STATE
@@ -11,14 +12,22 @@ const App = () => {
     {
       id: "todo1",
       title: "Watching Youtube",
+      type: "Yushinoda",
     },
     {
       id: "todo2",
       title: "doing homework",
+      type: "Yua Mikami",
     },
     {
       id: "todo3",
       title: "Watch JAV",
+      type: "Yushinoda",
+    },
+    {
+      id: "todo4",
+      title: "reading book",
+      type: "Minamo",
     },
   ]);
 
@@ -32,6 +41,7 @@ const App = () => {
     let newTodo = {
       id: Math.floor(Math.random() * 1000),
       title: address,
+      type: "Yushinoda",
     };
     setTodos([...todos, newTodo]);
     setAddress("");
@@ -45,15 +55,11 @@ const App = () => {
       <header className="App-header">
         <Nav />
         <h3>Hello world with {name}</h3>
-        <div className="todo-container">
-          {todos.map((item, index) => {
-            return (
-              <li key={item.id}>
-                {item.id} - {item.title}
-              </li>
-            );
-          })}
-        </div>
+        <Todo todos={todos} title={"All Todo"} />
+        <Todo
+          todos={todos.filter((item) => item.type === "Yushinoda")}
+          title={`Yushinoda todos`}
+        />
         <input
           type="text"
           value={address}

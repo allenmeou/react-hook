@@ -1,5 +1,5 @@
 import "./Nav.scss";
-import logo from "../logo.svg";
+import logo from "../../logo.svg";
 const Nav = () => {
   return (
     <div className="container">
@@ -24,7 +24,7 @@ const Nav = () => {
                 </li>
                 <li className="list-item">
                   <a className="nav__link" href="#">
-                    About
+                    Todo
                   </a>
                 </li>
                 <li className="list-item">
