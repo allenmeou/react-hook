@@ -25,6 +25,16 @@ const App = () => {
   // EVENT
   const handleSubmitButton = () => {
     // hook not merge state
+    if (!address) {
+      alert("empty input");
+      return;
+    }
+    let newTodo = {
+      id: Math.floor(Math.random() * 1000),
+      title: address,
+    };
+    setTodos([...todos, newTodo]);
+    setAddress("");
   };
   const handleChangeValueInput = (event) => {
     setAddress(event.target.value);
@@ -51,7 +61,7 @@ const App = () => {
         />{" "}
         <br />
         <button type="button" onClick={() => handleSubmitButton()}>
-          CLick Me!
+          Add Todo
         </button>
       </header>
     </div>
