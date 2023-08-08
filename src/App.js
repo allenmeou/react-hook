@@ -7,7 +7,9 @@ import Todo from "./views/Todo/Todo";
 const App = () => {
   // STATE
   const [name, setName] = useState("");
+
   const [address, setAddress] = useState("");
+
   const [todos, setTodos] = useState([
     {
       id: "todo1",
@@ -38,6 +40,7 @@ const App = () => {
       alert("empty input");
       return;
     }
+
     let newTodo = {
       id: Math.floor(Math.random() * 1000),
       title: address,
@@ -46,8 +49,15 @@ const App = () => {
     setTodos([...todos, newTodo]);
     setAddress("");
   };
+
   const handleChangeValueInput = (event) => {
     setAddress(event.target.value);
+  };
+
+  const handleDeleteDataTodos = (id) => {
+    let currentTodos = todos;
+    currentTodos = currentTodos.filter((item) => item.id !== id);
+    setTodos(currentTodos);
   };
 
   return (
@@ -55,11 +65,15 @@ const App = () => {
       <header className="App-header">
         <Nav />
         <h3>Hello world with {name}</h3>
-        <Todo todos={todos} title={"All Todo"} />
         <Todo
+          todos={todos}
+          title={"All Todo"}
+          handleDeleteDataTodos={handleDeleteDataTodos}
+        />
+        {/* <Todo
           todos={todos.filter((item) => item.type === "Yushinoda")}
           title={`Yushinoda todos`}
-        />
+        /> */}
         <input
           type="text"
           value={address}
