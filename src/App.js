@@ -1,5 +1,5 @@
 // import logo from "./logo.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Nav from "./views/Nav/Nav";
 import Todo from "./views/Todo/Todo";
@@ -32,6 +32,11 @@ const App = () => {
       type: "Minamo",
     },
   ]);
+
+  useEffect(() => {
+    setAddress("add");
+    console.log("run useEffect");
+  });
 
   // EVENT
   const handleSubmitButton = () => {
@@ -78,7 +83,7 @@ const App = () => {
           type="text"
           value={address}
           onChange={(event) => handleChangeValueInput(event)}
-        />{" "}
+        />
         <br />
         <button type="button" onClick={() => handleSubmitButton()}>
           Add Todo
