@@ -34,9 +34,8 @@ const App = () => {
   ]);
 
   useEffect(() => {
-    setAddress("add");
     console.log("run useEffect");
-  });
+  }, []);
 
   // EVENT
   const handleSubmitButton = () => {
