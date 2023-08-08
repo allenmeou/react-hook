@@ -72,7 +72,7 @@ const App = () => {
         />
         {/* <Todo
           todos={todos.filter((item) => item.type === "Yushinoda")}
-          title={`Yushinoda todos`}
+          title={`Yushinoda todos`} a
         /> */}
         <input
           type="text"
