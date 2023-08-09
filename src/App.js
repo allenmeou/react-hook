@@ -34,7 +34,7 @@ const App = () => {
   ]);
 
   useEffect(() => {
-    console.log("run useEffect");
+    // console.log("run useEffect");
   }, []);
 
   // EVENT
