@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Nav from "./views/Nav/Nav";
 import Todo from "./views/Todo/Todo";
+import { Axios } from "axios";
+import Covid from "./views/Covid/Covid";
 
 const App = () => {
   // STATE
@@ -32,10 +34,6 @@ const App = () => {
       type: "Minamo",
     },
   ]);
-
-  useEffect(() => {
-    // console.log("run useEffect");
-  }, []);
 
   // EVENT
   const handleSubmitButton = () => {
@@ -68,16 +66,12 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <Nav />
-        <h3>Hello world with {name}</h3>
-        <Todo
+        {/* <h3>Hello world with {name}</h3> */}
+        {/* <Todo
           todos={todos}
           title={"All Todo"}
           handleDeleteDataTodos={handleDeleteDataTodos}
         />
-        {/* <Todo
-          todos={todos.filter((item) => item.type === "Yushinoda")}
-          title={`Yushinoda todos`} a
-        /> */}
         <input
           type="text"
           value={address}
@@ -86,7 +80,8 @@ const App = () => {
         <br />
         <button type="button" onClick={() => handleSubmitButton()}>
           Add Todo
-        </button>
+        </button> */}
+        <Covid />
       </header>
     </div>
   );
