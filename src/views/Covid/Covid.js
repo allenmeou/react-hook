@@ -1,54 +1,70 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import moment from "moment";
+import moment from "moment/moment";
+import "./Covid.scss";
 
 const Covid = () => {
   const [dataCovid, setDataCovid] = useState([]);
   // componentDidMount
-  useEffect(async () => {
-    let res = await axios.get(
-      "https://api.covid19api.com/country/vietnam?from=2021-10-01T00:00:00Z&to=2021-10-20T00:00:00Z"
-    );
-    let data = res && res.data ? res.data : [];
-    if (data && data.length > 0) {
-      data.map((item) => {
-        item.Date = moment(item.Date).format("DD/MM/YYYY");
-        return item;
-      });
-    }
-    setDataCovid(data);
+  useEffect(() => {
+    (async function anyNameFunction() {
+      const options = {
+        method: "GET",
+        url: "https://covid-193.p.rapidapi.com/statistics",
+        headers: {
+          "X-RapidAPI-Key":
+            "420e0a031amsh6ce33aa56b81f45p1feb8cjsnde5ededbc0fe",
+          "X-RapidAPI-Host": "covid-193.p.rapidapi.com",
+        },
+      };
+
+      try {
+        const response = await axios.request(options);
+        let dataRes = response.data.response;
+        if (dataRes && dataRes.length > 9) {
+          dataRes.map((item) => {
+            item.time = moment(item.time).format("DD/MM/YYYY");
+            return item;
+          });
+        }
+        console.log(dataRes);
+        setDataCovid(dataRes);
+        console.log(">>> check setDataCovid", dataCovid);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
   }, []);
 
   return (
-    <>
-      <h3>Covid 19 tracking in VietNam:</h3>
+    <div className="covid-container">
+      <h2>Covid 19 Tracking</h2>
       <table>
-        <thead>
+        <tbody>
           <tr>
             <th>Date</th>
-            <th>Confirmed</th>
+            <th>Country</th>
             <th>Active</th>
             <th>Deaths</th>
             <th>Recovered</th>
           </tr>
-        </thead>
-        <tbody>
-          {dataCovid &&
-            dataCovid.length > 0 &&
-            dataCovid.map((item) => {
-              return (
-                <tr key={item.ID}>
-                  <td>{item.Date}</td>
-                  <td>{item.Confirmed}</td>
-                  <td>{item.Active}</td>
-                  <td>{item.Deaths}</td>
-                  <td>{item.Recovered}</td>
-                </tr>
-              );
-            })}
+          {dataCovid.map((item, index) => {
+            return (
+              <tr key={index}>
+                <td>{item.time}</td>
+                <td>{item.country}</td>
+                {/* <td></td>
+                <td></td>
+                <td></td> */}
+                <td>{item.cases.active}</td>
+                <td>{item.deaths.total}</td>
+                <td>{item.cases.recovered}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 
