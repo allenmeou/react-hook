@@ -1,44 +1,13 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import moment from "moment/moment";
+// import { useEffect, useState } from "react";
+// import axios from "axios";
+// import moment from "moment/moment";
 import "./Covid.scss";
+import useFetch from "../../customize/fetch";
 
 const Covid = () => {
-  const [dataCovid, setDataCovid] = useState([]);
-  const [loading, setLoading] = useState(true);
-  // componentDidMount
-  useEffect(() => {
-    setTimeout(() => {
-      (async function anyNameFunction() {
-        const options = {
-          method: "GET",
-          url: "https://covid-193.p.rapidapi.com/statistics",
-          headers: {
-            "X-RapidAPI-Key":
-              "420e0a031amsh6ce33aa56b81f45p1feb8cjsnde5ededbc0fe",
-            "X-RapidAPI-Host": "covid-193.p.rapidapi.com",
-          },
-        };
-
-        try {
-          const response = await axios.request(options);
-          let data = response.data.response;
-          if (data && data.length > 9) {
-            data.map((item) => {
-              item.time = moment(item.time).format("DD/MM/YYYY");
-              return item;
-            });
-          }
-          // console.log(data);
-          setDataCovid(data);
-          setLoading(false);
-          // console.log(">>> check setDataCovid", dataCovid);
-        } catch (error) {
-          console.error(error);
-        }
-      })();
-    }, 4000);
-  }, []);
+  const { data: dataCovid, loading: isLoading } = useFetch(
+    "https://covid-193.p.rapidapi.com/statistics"
+  );
 
   return (
     <div className="covid-container">
@@ -52,7 +21,7 @@ const Covid = () => {
             <th>Deaths</th>
             <th>Recovered</th>
           </tr>
-          {loading === false &&
+          {isLoading === false &&
             dataCovid &&
             dataCovid.length > 0 &&
             dataCovid.map((item, index) => {
@@ -69,7 +38,7 @@ const Covid = () => {
                 </tr>
               );
             })}
-          {loading === true && (
+          {isLoading === true && (
             <tr>
               <td style={{ textAlign: "center" }} colSpan="5">
                 Loading ...
