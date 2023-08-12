@@ -5,6 +5,7 @@ import Nav from "./views/Nav/Nav";
 import Todo from "./views/Todo/Todo";
 import { Axios } from "axios";
 import Covid from "./views/Covid/Covid";
+import { CountDown, NewCountDown } from "./views/CountDown/CountDown";
 
 const App = () => {
   // STATE
@@ -62,6 +63,10 @@ const App = () => {
     setTodos(currentTodos);
   };
 
+  const onTimeUp = () => {
+    // alert("time up");
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -81,6 +86,9 @@ const App = () => {
         <button type="button" onClick={() => handleSubmitButton()}>
           Add Todo
         </button> */}
+        <CountDown onTimeUp={onTimeUp} />
+        <br />
+        <NewCountDown onTimeUp={onTimeUp} />
         <Covid />
       </header>
     </div>
