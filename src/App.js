@@ -6,6 +6,7 @@ import Todo from "./views/Todo/Todo";
 import { Axios } from "axios";
 import Covid from "./views/Covid/Covid";
 import { CountDown, NewCountDown } from "./views/CountDown/CountDown";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const App = () => {
   // STATE
@@ -68,30 +69,39 @@ const App = () => {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <Nav />
-        {/* <h3>Hello world with {name}</h3> */}
-        {/* <Todo
-          todos={todos}
-          title={"All Todo"}
-          handleDeleteDataTodos={handleDeleteDataTodos}
-        />
-        <input
-          type="text"
-          value={address}
-          onChange={(event) => handleChangeValueInput(event)}
-        />
-        <br />
-        <button type="button" onClick={() => handleSubmitButton()}>
-          Add Todo
-        </button> */}
-        <CountDown onTimeUp={onTimeUp} />
-        <br />
-        <NewCountDown onTimeUp={onTimeUp} />
-        <Covid />
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <Nav />
+        </header>
+        <Switch>
+          <Route path="/" exact>
+            <Covid />
+          </Route>
+          <Route path="/todo">
+            <Todo
+              todos={todos}
+              title={"All Todo"}
+              handleDeleteDataTodos={handleDeleteDataTodos}
+            />
+            <input
+              type="text"
+              value={address}
+              onChange={(event) => handleChangeValueInput(event)}
+            />
+            <br />
+            <button type="button" onClick={() => handleSubmitButton()}>
+              Add Todo
+            </button>
+          </Route>
+          <Route path="/timer">
+            <CountDown onTimeUp={onTimeUp} />
+            <br />
+            <NewCountDown onTimeUp={onTimeUp} />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 };
 

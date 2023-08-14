@@ -6,7 +6,7 @@ const Nav = () => {
       <header className="site-header">
         <div className="header__content--flow">
           <div className="header-content--left">
-            <a href="#" className="brand-logo">
+            <a href="/" className="brand-logo">
               <img className="App-logo" src={logo} alt="logo" />
               <span className="logo-text"></span>
             </a>
@@ -18,27 +18,27 @@ const Nav = () => {
             <nav className="header-nav" role="navigation">
               <ul className="nav__list" aria-expanded="false">
                 <li className="list-item">
-                  <a className="nav__link" href="#">
+                  <a className="nav__link" href="/">
                     Home
                   </a>
                 </li>
                 <li className="list-item">
-                  <a className="nav__link" href="#">
+                  <a className="nav__link" href="/todo">
                     Todo
                   </a>
                 </li>
                 <li className="list-item">
-                  <a className="nav__link" href="#">
-                    Products
+                  <a className="nav__link" href="/timer">
+                    Timer App
                   </a>
                 </li>
                 <li className="list-item">
-                  <a className="nav__link" href="#">
-                    Links
+                  <a className="nav__link" href="/secret">
+                    Secret
                   </a>
                 </li>
                 <li className="list-item">
-                  <a className="nav__link" href="#">
+                  <a className="nav__link" href="/contact">
                     Contact
                   </a>
                 </li>
