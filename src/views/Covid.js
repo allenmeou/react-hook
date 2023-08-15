@@ -1,9 +1,7 @@
 // import { useEffect, useState } from "react";
 // import axios from "axios";
 // import moment from "moment/moment";
-import "./Covid.scss";
-import useFetch from "../../customize/fetch";
-
+import useFetch from "../customize/fetch";
 const Covid = () => {
   const { data: dataCovid, loading: isLoading } = useFetch(
     "https://covid-193.p.rapidapi.com/statistics"
