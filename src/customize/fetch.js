@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import moment from "moment";
-import axios from "axios";
+import axios, { Axios } from "axios";
 
 const useFetch = (url) => {
   const [data, setData] = useState([]);
@@ -18,7 +18,6 @@ const useFetch = (url) => {
             "X-RapidAPI-Host": "covid-193.p.rapidapi.com",
           },
         };
-
         try {
           const response = await axios.request(options);
           let data = response.data.response;
@@ -28,10 +27,8 @@ const useFetch = (url) => {
               return item;
             });
           }
-          // console.log(data);
           setData(data);
           setLoading(false);
-          // console.log(">>> check setData", dataCovid);
         } catch (error) {
           console.error(error);
           console.log(error.name + "" + error.message);
