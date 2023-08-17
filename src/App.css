@@ -55,7 +55,7 @@ th {
 }
 
 tr:nth-child(even) {
-  background-color: #545454;
+  /* background-color: #545454; */
 }
 
 h3 {

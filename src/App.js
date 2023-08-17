@@ -8,6 +8,7 @@ import Todo from "./views/Todo";
 import Covid from "./views/Covid";
 import { CountDown, NewCountDown } from "./views/Countdown";
 import Blog from "./views/Blog";
+import DetailBlog from "./views/DetailBlog";
 
 // template + logic
 // JSX
@@ -96,8 +97,11 @@ const App = () => {
               Click me
             </button>
           </Route>
-          <Route path="/blog">
+          <Route path="/blog" exact>
             <Blog />
+          </Route>
+          <Route path="/blog/:id">
+            <DetailBlog />
           </Route>
         </Switch>
       </div>
