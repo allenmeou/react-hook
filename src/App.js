@@ -1,3 +1,5 @@
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 import logo from "./logo.svg";
 import "./App.css";
 import Nav from "./views/Nav.js";
@@ -5,8 +7,7 @@ import { useState, useEffect } from "react";
 import Todo from "./views/Todo";
 import Covid from "./views/Covid";
 import { CountDown, NewCountDown } from "./views/Countdown";
-
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Blog from "./views/Blog";
 
 // template + logic
 // JSX
@@ -26,13 +27,9 @@ const App = () => {
   ]);
 
   //didmount
-  useEffect(() => {
-    console.log("run use effect");
-  }, [address]);
+  useEffect(() => {}, [address]);
 
-  useEffect(() => {
-    console.log("run use effect todos");
-  }, [todos]);
+  useEffect(() => {}, [todos]);
 
   const handleEventClick = (event) => {
     if (!address) {
@@ -70,7 +67,7 @@ const App = () => {
       <div className="App">
         <header className="App-header">
           <Nav />
-          <img src={logo} className="App-logo" alt="logo" />
+          {/* <img src={logo} className="App-logo" alt="logo" /> */}
         </header>
 
         {/* A <Switch> looks through its children <Route>s and
@@ -98,6 +95,9 @@ const App = () => {
             <button type="button" onClick={(event) => handleEventClick(event)}>
               Click me
             </button>
+          </Route>
+          <Route path="/blog">
+            <Blog />
           </Route>
         </Switch>
       </div>
