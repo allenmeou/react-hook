@@ -33,7 +33,9 @@ const Blog = () => {
         })}
 
       {setLoading === true && (
-        <span style={{ margin: "0 auto" }}>loading data...</span>
+        <>
+          <span style={{ margin: "0 auto" }}>loading blogs...</span>
+        </>
       )}
     </div>
   );
