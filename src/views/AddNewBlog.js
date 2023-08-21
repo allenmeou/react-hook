@@ -8,12 +8,16 @@ const AddNewBlog = () => {
 
   const handleSubmitBtn = (e) => {
     e.preventDefault();
+    if (!title || !content) {
+      alert("Please fill out the information completely !");
+      return;
+    }
     console.log("check data state:", title, content);
   };
 
   return (
     <div className="form-container">
-      <form className="form">
+      <form className="form" onSubmit={handleSubmitBtn}>
         <div>
           <h2>Add New Blog</h2>
         </div>
@@ -43,13 +47,7 @@ const AddNewBlog = () => {
             }}
           ></textarea>
         </div>
-        <button
-          className="form-submit-btn"
-          type="submit"
-          onClick={(e) => {
-            handleSubmitBtn(e);
-          }}
-        >
+        <button className="form-submit-btn" type="submit">
           Submit
         </button>
       </form>
