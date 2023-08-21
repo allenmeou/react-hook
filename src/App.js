@@ -1,7 +1,7 @@
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import logo from "./logo.svg";
-import "./App.css";
+// import logo from "./logo.svg";
+import "./App.scss";
 import Nav from "./views/Nav.js";
 import { useState, useEffect } from "react";
 import Todo from "./views/Todo";
@@ -19,7 +19,7 @@ const App = () => {
   //class
 
   //state
-  let [name, setName] = useState("Eric"); //[a1, b1, c1....]
+  // let [name, setName] = useState("Eric"); //[a1, b1, c1....]
   const [address, setAddress] = useState("");
   const [todos, setTodos] = useState([
     { id: "todo1", title: "Watching Hoi Dan IT Channel", type: "eric" },

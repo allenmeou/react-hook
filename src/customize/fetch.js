@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import moment from "moment";
-import axios, { Axios } from "axios";
+import axios from "axios";
 
 const useFetch = (url) => {
   const [data, setData] = useState([]);

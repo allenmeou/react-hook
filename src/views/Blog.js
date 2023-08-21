@@ -1,34 +1,56 @@
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useEffect, useState } from "react";
 
 import useFetch from "../customize/fetchBlog";
 import "./Blog.scss";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import AddNewBlog from "./AddNewBlog";
 
 const Blog = () => {
+  const [show, setShow] = useState(false);
+  const [newData, setNewData] = useState([]);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const { data: dataBlogs, loading: setLoading } = useFetch(
     "https://jsonplaceholder.typicode.com/posts",
     false
   );
 
-  let newData = [];
+  useEffect(() => {
+    if (dataBlogs && dataBlogs.length > 0) {
+      let newDataSimple = dataBlogs.slice(0, 10);
+      setNewData(newDataSimple);
+    }
+  }, [dataBlogs]);
 
-  if (dataBlogs && dataBlogs.length > 0) {
-    newData = dataBlogs.slice(0, 10);
-  }
+  const handleAddNew = (blog) => {
+    let data = newData;
+    newData.unshift(blog);
 
-  let history = useHistory();
-
-  const handleAddNew = () => {
-    history.push("/add-new-blog");
+    setShow(false);
+    setNewData(data);
   };
 
   return (
     <>
-      <div>
-        <button onClick={handleAddNew}>
-          <i className="fa-solid fa-plus icon-plus-post"></i>Add new blog
-        </button>
-      </div>
+      <>
+        <Button variant="primary" onClick={handleShow}>
+          <i className="fa-solid fa-plus icon-plus-post"></i> Add New Blog
+        </Button>
+
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>New Blog</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <AddNewBlog handleAddNew={handleAddNew} />
+          </Modal.Body>
+        </Modal>
+      </>
+
       <div className="blogs-container">
         {setLoading === false &&
           newData &&

@@ -1,18 +1,35 @@
 import { useState } from "react";
+import axios from "axios";
 
 import "./AddNewBlog.scss";
 
-const AddNewBlog = () => {
+const AddNewBlog = (props) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const handleSubmitBtn = (e) => {
+  const handleSubmitBtn = async (e) => {
     e.preventDefault();
     if (!title || !content) {
       alert("Please fill out the information completely !");
       return;
     }
-    console.log("check data state:", title, content);
+
+    let data = {
+      title: title,
+      body: content,
+      userId: Math.floor(Math.random() * 1001),
+    };
+
+    let res = await axios.post(
+      "https://jsonplaceholder.typicode.com/posts",
+      data
+    );
+
+    if (res && res.data) {
+      let newBlog = res.data;
+      props.handleAddNew(newBlog);
+      console.log("check new blog :", newBlog);
+    }
   };
 
   return (
