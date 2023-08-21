@@ -6,9 +6,11 @@ const Todo = (props) => {
   const handleDelete = (id) => {
     deleteDataTodo(id);
   };
+
   return (
     <div className="todos-container">
       <div className="title">{title}</div>
+
       {todos.map((todo) => {
         return (
           <div key={todo.id}>

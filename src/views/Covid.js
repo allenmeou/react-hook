@@ -1,6 +1,3 @@
-// import { useEffect, useState } from "react";
-// import axios from "axios";
-// import moment from "moment/moment";
 import useFetch from "../customize/fetch";
 const Covid = () => {
   const { data: dataCovid, loading: isLoading } = useFetch(
@@ -19,6 +16,7 @@ const Covid = () => {
             <th>Deaths</th>
             <th>Recovered</th>
           </tr>
+
           {isLoading === false &&
             dataCovid &&
             dataCovid.length > 0 &&
@@ -36,6 +34,7 @@ const Covid = () => {
                 </tr>
               );
             })}
+
           {isLoading === true && (
             <tr>
               <td style={{ textAlign: "center" }} colSpan="5">

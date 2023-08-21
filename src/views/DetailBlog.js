@@ -1,6 +1,5 @@
 import { useParams, useHistory } from "react-router-dom";
 import useFetch from "../customize/fetchBlog";
-
 import "./DatailBlog.scss";
 
 const DetailBlog = () => {

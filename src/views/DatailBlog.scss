@@ -1,40 +1,44 @@
+$color_1: white;
+$color_2: #161616;
+$color_3: blue;
+$font-family_1: inherit;
+$background-color_1: hsl(236, 32%, 26%);
+$background-color_2: #3cefff;
+
 button {
   z-index: 1;
   position: relative;
   font-size: inherit;
-  font-family: inherit;
-  color: white;
+  font-family: $font-family_1;
+  color: $color_1;
   padding: 0.5em 1em;
   outline: none;
   border: none;
-  background-color: hsl(236, 32%, 26%);
+  background-color: $background-color_1;
   overflow: hidden;
   transition: color 0.4s ease-in-out;
   margin-top: 20px;
-}
-
-button::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  top: 100%;
-  right: 100%;
-  width: 1em;
-  height: 1em;
-  border-radius: 50%;
-  background-color: #3cefff;
-  transform-origin: center;
-  transform: translate3d(50%, -50%, 0) scale3d(0, 0, 0);
-  transition: transform 0.45s ease-in-out;
-}
-
-button:hover {
-  cursor: pointer;
-  color: #161616;
-}
-
-button:hover::before {
-  transform: translate3d(50%, -50%, 0) scale3d(15, 15, 15);
+  &::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 100%;
+    right: 100%;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: $background-color_2;
+    transform-origin: center;
+    transform: translate3d(50%, -50%, 0) scale3d(0, 0, 0);
+    transition: transform 0.45s ease-in-out;
+  }
+  &:hover {
+    cursor: pointer;
+    color: $color_2;
+    &::before {
+      transform: translate3d(50%, -50%, 0) scale3d(15, 15, 15);
+    }
+  }
 }
 .blog-detail {
   border: 1px solid grey;
@@ -43,7 +47,7 @@ button:hover::before {
 }
 .title {
   font-size: 30px;
-  color: blue;
+  color: $color_3;
 }
 .content {
   margin-top: 10px;

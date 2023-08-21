@@ -1,6 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-
 import "./AddNewBlog.scss";
 
 const AddNewBlog = (props) => {
@@ -9,6 +8,7 @@ const AddNewBlog = (props) => {
 
   const handleSubmitBtn = async (e) => {
     e.preventDefault();
+
     if (!title || !content) {
       alert("Please fill out the information completely !");
       return;

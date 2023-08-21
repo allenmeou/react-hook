@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
-// import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect, useState } from "react";
-
 import useFetch from "../customize/fetchBlog";
 import "./Blog.scss";
 import Modal from "react-bootstrap/Modal";
@@ -11,6 +9,7 @@ import AddNewBlog from "./AddNewBlog";
 const Blog = () => {
   const [show, setShow] = useState(false);
   const [newData, setNewData] = useState([]);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 

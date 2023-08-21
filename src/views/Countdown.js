@@ -12,10 +12,6 @@ class CountDown extends React.Component {
   }
 
   componentDidMount() {
-    // setTimeout(() => {
-    //     console.log('me')
-    // }, 1000);
-
     this.timer = setInterval(() => {
       this.setState({
         count: this.state.count - 1,

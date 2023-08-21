@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-// import logo from "./logo.svg";
 import "./App.scss";
 import Nav from "./views/Nav.js";
 import { useState, useEffect } from "react";
@@ -11,15 +10,7 @@ import Blog from "./views/Blog";
 import DetailBlog from "./views/DetailBlog";
 import AddNewBlog from "./views/AddNewBlog";
 
-// template + logic
-// JSX
-//babel
-
 const App = () => {
-  //class
-
-  //state
-  // let [name, setName] = useState("Eric"); //[a1, b1, c1....]
   const [address, setAddress] = useState("");
   const [todos, setTodos] = useState([
     { id: "todo1", title: "Watching Hoi Dan IT Channel", type: "eric" },
@@ -28,9 +19,7 @@ const App = () => {
     { id: "todo4", title: "Reading books", type: "hoidanit" },
   ]);
 
-  //didmount
   useEffect(() => {}, [address]);
-
   useEffect(() => {}, [todos]);
 
   const handleEventClick = (event) => {
@@ -38,6 +27,7 @@ const App = () => {
       alert("emtpy input");
       return;
     }
+
     //hook not merge state
     //...spread syntax array js
     let newTodo = {
@@ -62,6 +52,7 @@ const App = () => {
   const onTimesup = () => {
     // alert('times up')
   };
+
   //re-render
   //for for-each => map
   return (
@@ -78,11 +69,13 @@ const App = () => {
           <Route path="/" exact>
             <Covid />
           </Route>
+
           <Route path="/timer">
             <CountDown onTimesup={onTimesup} />
             <span>---------------------</span>
             <NewCountDown onTimesup={onTimesup} />
           </Route>
+
           <Route path="/todo">
             <Todo
               todos={todos}
@@ -98,12 +91,15 @@ const App = () => {
               Click me
             </button>
           </Route>
+
           <Route path="/blog" exact>
             <Blog />
           </Route>
+
           <Route path="/blog/:id">
             <DetailBlog />
           </Route>
+
           <Route path="/add-new-blog">
             <AddNewBlog />
           </Route>
