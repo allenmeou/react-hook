@@ -10,6 +10,7 @@ import Blog from "./views/Blog";
 import DetailBlog from "./views/DetailBlog";
 import AddNewBlog from "./views/AddNewBlog";
 import ErrorPage from "./views/ErrorPage";
+import Youtube from "./views/Youtube";
 
 const App = () => {
   const [address, setAddress] = useState("");
@@ -103,6 +104,10 @@ const App = () => {
 
           <Route path="/add-new-blog">
             <AddNewBlog />
+          </Route>
+
+          <Route path="/youtube">
+            <Youtube />
           </Route>
 
           <Route path="*">

@@ -87,7 +87,7 @@ const Blog = () => {
 
         {setLoading === true && (
           <>
-            <span style={{ margin: "0 auto" }}>loading blogs...</span>
+            <span className="loading-blog">loading blogs...</span>
           </>
         )}
       </div>
