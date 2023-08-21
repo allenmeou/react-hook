@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+// import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect, useState } from "react";
 
 import useFetch from "../customize/fetchBlog";
@@ -26,11 +26,19 @@ const Blog = () => {
     }
   }, [dataBlogs]);
 
+  // add blog new
   const handleAddNew = (blog) => {
     let data = newData;
     newData.unshift(blog);
 
     setShow(false);
+    setNewData(data);
+  };
+
+  // delete post with id blog
+  const handleDeletePost = (id) => {
+    let data = newData;
+    data = data.filter((item) => item.id !== id);
     setNewData(data);
   };
 
@@ -60,9 +68,20 @@ const Blog = () => {
               <div key={item.id} className="single-blog">
                 <div className="title"> {item.title}</div>
                 <div className="content">{item.body}</div>
-                <button>
-                  <Link to={`/blog/${item.id}`}> View Detail</Link>
-                </button>
+                <div className="btn-post">
+                  <button>
+                    <Link to={`/blog/${item.id}`}> View Detail</Link>
+                  </button>
+                  <div>
+                    <button>Edit</button>
+                    <button
+                      style={{ marginLeft: 20 }}
+                      onClick={() => handleDeletePost(item.id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
               </div>
             );
           })}
