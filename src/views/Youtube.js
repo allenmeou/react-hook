@@ -7,8 +7,6 @@ const Youtube = () => {
   const [videos, setVideos] = useState([]);
   const [query, setQuery] = useState("");
 
-  useEffect(() => {}, []);
-
   const handleSearchYoutube = async () => {
     let res = await axios({
       method: "GET",
