@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import "./App.scss";
 import Nav from "./views/Nav.js";
 import { useState, useEffect } from "react";
 import Todo from "./views/Todo";
@@ -11,6 +10,7 @@ import DetailBlog from "./views/DetailBlog";
 import AddNewBlog from "./views/AddNewBlog";
 import ErrorPage from "./views/ErrorPage";
 import Youtube from "./views/Youtube";
+import "./App.scss";
 
 const App = () => {
   const [address, setAddress] = useState("");
