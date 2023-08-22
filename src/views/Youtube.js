@@ -7,7 +7,7 @@ const Youtube = () => {
   const [videos, setVideos] = useState([]);
   const [query, setQuery] = useState("");
 
-  // useEffect(() => {}, []);
+  useEffect(() => {}, []);
 
   const handleSearchYoutube = async () => {
     let res = await axios({
@@ -26,6 +26,7 @@ const Youtube = () => {
       let raw = res.data.items;
       let result = [];
       if (raw && raw.length > 0) {
+        // eslint-disable-next-line array-callback-return
         raw.map((item) => {
           let object = {};
 
